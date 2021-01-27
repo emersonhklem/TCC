@@ -1,0 +1,276 @@
+
+<%- include ('../../../partials/header.ejs') %>
+<%- include ('../../../partials/navbar.ejs') %>
+
+<br>
+<br>
+<div class="container">
+    <hr>
+    <div class="card mt-5">
+        <div class="card-header"> 
+           <h2>Relatorio de despesas </h2> 
+        </div>
+        <div class="card-body">          
+                
+                <h2>Pesquisar por:</h2>
+               
+                <button style="text-align: center;" class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">Mês</button>              
+                <div class="col">
+                    <div class="collapse multi-collapse" id="multiCollapseExample1">
+                     
+                <form action="/admin/relatorio/save" method="POST">
+                <div class="card mt-4 col-md-10">
+               <div class="form-row">
+                &nbsp;&nbsp;<h3>Mês</h3>&nbsp;&nbsp;&nbsp;&nbsp;
+               
+               <div class="form-group col-md-3">
+                <input name="form" type="hidden" value="mes">
+                <input name="valorserv" type="hidden" value="<%=valorserv%>">
+                <input name="valordesp" type="hidden" value="<%=valordesp%>">
+               <label>Mês</label>
+               <select name="mes" class="form-control" >                   
+                <option value="1" >1 </option>
+                <option value="2">2 </option>
+                <option value="3">3</option>         
+            </select>
+        </div>
+        <a style="position:absolute; top: 30%; left: 87%;"><button class="btn btn-dark" type="submit">Pesquisar</button></a>
+        </div>
+        <br><br>       
+</div>
+        
+                
+    </form>
+    </div>
+    </div>
+    <% if(form == "mes"){  %>
+       
+            <div class="card-body">
+               
+                        <h3>  <%=mes%> de 2020</h3>
+               
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Descrição</th>
+                                    <th>Tipo</th>
+                               
+                                    <th>Data</th>
+                                    
+                                    <th>Valor</th>
+                                 
+                                </tr>
+                            </thead>
+                            <tbody>
+                               
+                               <%  despesas.forEach(despesa => { %>
+                              
+                                <tr>
+                                   
+                                   <td> <%= despesa.descricao %> </td>
+                                   <td> <%= despesa.tipo %> </td>
+                                
+                                   <td> <%= despesa.dia %>-<%=despesa.mes%>-2020    </td>
+                                   
+                                   <td>R$  <%= despesa.valor %>   </td>
+                    
+                   
+                   
+                                </tr>
+                                <% }) %>
+                            </tbody>
+                       </table>
+            </div>            
+       
+<% } %>
+    
+<hr>
+<button style="text-align: center;" class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Dia</button>
+
+<div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample2">
+    <form action="/admin/relatorio/save" method="POST">
+        <div class="card mt-3 col-md-10">
+            <div class="form-row">
+             &nbsp;&nbsp;<h3>Dia</h3>&nbsp;&nbsp;&nbsp;&nbsp;
+             
+            
+                <div class="form-group col-md-3">
+                    <input name="form" type="hidden" value="dia">
+                
+                   
+               
+                <label>Mês</label>
+                <select name="mes" class="form-control" > 
+                    <option value="1" >1 </option>
+                    <option value="2">2 </option>
+                    <option value="3">3</option>
+         </select><br>
+                
+        </div>
+        <div class="form-group col-md-3">
+         <label>Dia</label>
+         <input class="form-control " name="dia" type="text" placeholder="Digite o dia " required>  
+           
+     </div>
+     <a style="position: absolute; top: 30%; left: 87%;"><button class="btn btn-dark" type="submit">Pesquisar</button></a>
+     </div>
+     </div>
+    
+    </form>
+
+    </div>
+</div>
+
+
+
+<% if(form == "dia"){  %>  
+            
+            <div class="card-body">
+               
+                        <h3> <%=dia %> de <%=mes%> de 2020</h3>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Descrição</th>
+                                    <th>Tipo</th>
+                               
+                                    <th>Data</th>
+                                    
+                                    <th>Valor</th>
+                                 
+                                </tr>
+                            </thead>
+                            <tbody>
+                               
+                               <%  despesas.forEach(despesa => { %>
+                              
+                                <tr>
+                                   
+                                   <td> <%= despesa.descricao %> </td>
+                                   <td> <%= despesa.tipo %> </td>
+                                
+                                   <td> <%= despesa.dia %>-<%=despesa.mes%>-2020    </td>
+                                   
+                                   <td>R$  <%= despesa.valor %>   </td>
+                    
+                   
+                   
+                                </tr>
+                                <% }) %>
+                            </tbody>
+                       </table>
+           </div>
+                   
+
+<% } %>  
+<hr>
+    <button style="text-align: center;" class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Ultimos 7 dias</button>
+    
+    <div class="col">
+        <div class="collapse multi-collapse" id="multiCollapseExample3">
+    <form action="/admin/relatorio/save" method="POST">
+        <div class="card mt-3 col-md-10">
+            <div class="form-row">
+             &nbsp;&nbsp;<h3>Ultimos <br> 7 dias</h3>&nbsp;&nbsp;&nbsp;&nbsp;
+             
+             
+             <div class="form-group col-md-3">
+                <input name="form" type="hidden" value="semana">
+                <label>Mês</label>
+                <select name="mes" class="form-control" > 
+                    <option value="1" >1 </option>
+                    <option value="2">2 </option>
+                    <option value="3">3</option>
+         </select><br>
+        </div>  
+        <div class="form-group col-md-5">
+         <label>Dia </label>
+         <input class="form-control " name="dia" type="text" placeholder="Digite um dia e pesquisaremos 7 dias antes" required> 
+         
+        
+            
+        </div>
+     
+     <a style="position: absolute; top: 30%; left: 87%;"><button class="btn btn-dark" type="submit">Pesquisar</button></a>
+     </div>
+     </div>
+    
+    </form>
+        </div>
+    </div>
+    <% if(form == "semana"){  %>  
+               
+                <div class="card-body">
+                   
+                 <h3> 1 semana antes do dia <%=dia %> de <%=mes%> de 2020</h3>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Descrição</th>
+                                        <th>Tipo</th>
+                                   
+                                        <th>Data</th>
+                                        
+                                        <th>Valor</th>
+                                     
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                   
+                                   <%  despesas.forEach(despesa => { %>
+                                   <% if( despesa.dia == x|| despesa.dia == (x - 1) || despesa.dia == (x - 2) || despesa.dia == (x - 3) || despesa.dia == (x - 4) || despesa.dia == (x - 5) || despesa.dia == (x - 6)){%>
+                                      
+                                       
+                                    <tr>
+                                       
+                                       <td> <%= despesa.descricao %> </td>
+                                       <td> <%= despesa.tipo %> </td>
+                                    
+                                       <td> <%= despesa.dia %>-<%=despesa.mes%>-2020    </td>
+                                       
+                                       <td>R$  <%= despesa.valor %>   </td>
+                        
+                       
+                       <% }%>
+                                    </tr>
+                                    <% }) %>
+                                </tbody>
+                           </table>
+               </div>
+                       
+    
+    <% } %>         
+        </div>
+
+    </div>
+</div>
+<a style="position:fixed; top: 8%; left: 93%;" id="menu" class="navbar-brand " href="/usuario/menu">
+    <img src="/img/menu.png" alt="logo" width=75 height=80>
+   </a>    
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<%- include ('../../../partials/footer.ejs') %>

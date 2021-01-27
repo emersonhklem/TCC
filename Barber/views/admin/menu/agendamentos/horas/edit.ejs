@@ -1,0 +1,70 @@
+<%- include ('../../../../partials/header.ejs') %>
+<%- include ('../../../../partials/navbar.ejs') %>
+
+<br>
+<br>
+<div class="container">
+
+
+    <hr>
+    
+    
+       
+    <% horas.forEach(hora =>{ %>
+        <% if(hora.mes == mes){ %>
+         <% if(hora.id == id){ %>
+
+         
+        <div class="container">
+            
+            <div class="card">
+                 <div class="card-header">
+                    <h1> <%= hora.diaId %> de <%= nameMes%></h1>
+                </div>
+                 </div> <br>
+                </div>
+                
+
+             
+                  
+             
+                 
+                    <div class="card card-body">
+                    <form method="POST" action="/agender/edit/save"> 
+                    
+                        <div class="card">
+                            <div class="card-header">
+                               <h3> Horário de <%= hora.name%></h3>
+                           </div>
+                            </div>
+                      <br>
+                     
+                     <input type="hidden" value="<%= hora.id %>" name="id">
+                    
+                     <label> Nome:</label>
+                     <input class="form-control" name="nameAgender" type="text" value="<%= hora.nameAgender%>"  required>
+                    
+                     <br>
+                     <label> Email:</label>
+                     <input class="form-control" name="emailAgender" type="text" value="<%= hora.emailAgender%>" required><br>
+                     <label> Descrição:</label>
+                     <input class="form-control" name="descricaoAgender" type="text" value="<%= hora.descricaoAgender%>" required><br>
+                     <label> Whatsapp:</label>
+                     <input class="form-control" name="whatsappAgender" type="text" value="<%= hora.whatsappAgender%>" required><br>
+                     <input type="hidden" value="true" name="agender">
+                 
+                     <button class="btn btn-success btn-block" type="submit">Editar</button>
+                       
+                    </form>
+                </div>
+            <br>
+
+    <%} %>
+   <%}%>
+       <% }) %>
+
+
+    <hr>
+    
+</div>
+<%- include ('../../../../partials/footer.ejs') %>

@@ -1,0 +1,70 @@
+<%- include ('../../partials/header.ejs') %>
+<%- include ('../../partials/navbar.ejs') %>
+
+<br>
+<br>
+<div class="container">
+   <br>
+   <br>
+    <% if(success != ""){ %><div class="alert alert-success" role="alert">  <%= success%>  </div>  <%} %>
+    <hr>
+    <h2>Usuários cadastrados</h2>
+
+    <hr>
+    <table class="table table-bordered">
+        <thead>
+            <tr> 
+                
+                <th>Nome</th>
+               
+                <th>Whatsapp</th>
+                <th>email</th>
+                <th>Permissão</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(user => { %>
+                <tr> 
+                   
+                    <td><%= user.name %> <%= user.surname  %></td>
+                    <td><%= user.whatsapp %></td>
+                    <td><%= user.email %></td>
+                    <td><% if(user.permissao == 1) {%> 
+                    Cliente
+                    
+                    <% }else{ %>
+                        Usuário ADM
+                        <% }%>
+                    </td>
+                    <td> <form method="post" action="/users/delete" style="display: inline;" onsubmit="confirmarDelecao(event, this)"  > 
+                        <input type="hidden" name="id" value="<%= user.id  %>">
+                        <button class="btn btn-danger">Apagar</button>
+                    </form>   </td>
+                    
+                </tr>
+                <% }) %>
+
+               
+        </tbody>
+
+        
+    </table>
+
+    <a style="position:fixed; top: 8%; left: 93%;" id="menu" class="navbar-brand " href="/usuario/menu">
+        <img src="/img/menu.png" alt="menu" width=75 height=80>
+       </a>  
+</div>
+
+
+<%- include ('../../partials/footer.ejs') %>
+
+<script>
+    function confirmarDelecao(event, form){
+        event.preventDefault();
+        var decision = confirm("Você quer deletar esse usuário?")
+        if(decision){
+         form.submit();
+        }
+    }
+</script>

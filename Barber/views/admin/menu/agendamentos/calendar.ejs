@@ -1,0 +1,32 @@
+<%- include ('../../../partials/header.ejs') %>
+<%- include ('../../../partials/navbar.ejs') %>
+
+<br>
+<br>
+<div class="container">
+
+  <br>
+  <br>
+  <% if(success != ""){ %><div class="alert alert-success" role="alert">  <%= success%>  </div>  <%} %>
+    <br>
+    <h4 > Escolha um mês </h4>
+    <hr >
+    <div class="card">
+        <div class="card-header">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary active">
+                  <input type="radio" name="options" id="option1" autocomplete="off" > <a href="/usuario/janeiro">Janeiro</a>
+                </label>
+                <label class="btn btn-secondary">
+                  <input type="radio" name="options" id="option2" autocomplete="off"> <a href="/usuario/fevereiro">Fevereiro</a>
+                </label>
+                <label class="btn btn-secondary">
+                  <input type="radio" name="options" id="option3" autocomplete="off"> <a href="/usuario/marco"> Março</a>
+                </label>
+              </div>
+        </div>
+        <a style="position:fixed; top: 8%; left: 93%;" id="menu" class="navbar-brand " href="/usuario/menu">
+          <img src="/img/menu.png" alt="menu" width=75 height=80>
+         </a>    
+    </div>
+    <%- include ('../../../partials/footer.ejs') %>

@@ -1,0 +1,88 @@
+<%- include ('../../../partials/header.ejs') %>
+<%- include ('../../../partials/navbar.ejs') %>
+
+<br>
+<br>
+<div class="container">
+    <hr>
+    <div class="card mt-5">
+        <div class="card-header"> 
+           <h2>Inserir serviços </h2> 
+        </div>
+        <div class="card-body">
+            <form action="/servicos/save" method="POST">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                    <label> Descrição do serviço:</label>
+                <input class="form-control " name="descricao" type="text" placeholder="Exemplo: barba " required>
+                <% if(errorDescricao != ""){ %><div class="alert alert-danger" role="alert">  <%= errorDescricao%>  </div>  <%} %>
+                    </div>
+                    <div class="form-group col-md-3">
+                <label> Tipo:</label>
+                <select name="tipo" class="form-control " > 
+                   
+                         <option value="Estética" >Estética </option>
+                         <option value="Venda">Venda </option>
+                    
+                    
+                 </select>
+                 <% if(errorTipo != ""){ %><div class="alert alert-danger" role="alert">  <%= errorTipo%>  </div>  <%} %>
+                 
+                 </div>
+                 
+                 </div>
+                 <div class="form-row">
+                 <div class="form-group col-md-4">
+                    <label> Valor: (Digite apenas números e ponto)</label>
+                    <input class="form-control" name="valor" type="text" placeholder="0.00 " required>
+                    <% if(errorValor != ""){ %><div class="alert alert-danger" role="alert">  <%= errorValor%>  </div>  <%} %>
+                    </div>
+                 </div>
+
+                 <div class="form-row">
+                 <div class="form-group col-md-3">
+                 <label> Cliente:</label>
+                <input class="form-control" name="cliente" type="text" placeholder="Nome do cliente " required>
+                <% if(errorCliente != ""){ %><div class="alert alert-danger" role="alert">  <%= errorCliente%>  </div>  <%} %>
+                 </div>
+                 <div class="form-group col-md-3">
+                <label> Dia:</label>
+                <input class="form-control" name="dia" type="text" placeholder="Dia do serviço " required >
+                <% if(errorDia != ""){ %><div class="alert alert-danger" role="alert">  <%= errorDia%>  </div>  <%} %>
+                </div>
+                <div class="form-group col-md-3">
+                <label> Mês:</label>
+                <input class="form-control" name="mes" type="text" placeholder="Mês do serviço " required>
+                <% if(errorMes != ""){ %><div class="alert alert-danger" role="alert">  <%= errorMes%>  </div>  <%} %>
+            </div>
+            <div class="form-group col-md-3" >
+                <label> Pagamento:</label>
+                <select name="pagamento" class="form-control" > 
+                   
+                    <option value="Ok" >Ok </option>
+                    <option value="Pendente">Pendente </option>
+               
+               
+            </select>
+            <% if(errorPagamento != ""){ %><div class="alert alert-danger" role="alert" >  <%= errorPagamento%>  </div>  <%} %>
+            <br>
+            </div>
+        </div>
+
+                
+                
+               
+            <button class="btn btn-success btn-block" type="submit">Inserir</button>
+        </form>
+
+        
+        </div>
+
+    </div>
+    <a style="position:fixed; top: 8%; left: 93%;" id="menu" class="navbar-brand " href="/usuario/menu">
+        <img src="/img/menu.png" alt="logo" width=75 height=80>
+       </a>    
+</div>
+
+
+<%- include ('../../../partials/footer.ejs') %>

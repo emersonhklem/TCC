@@ -1,0 +1,209 @@
+<%- include ('./partials/header.ejs') %>
+
+<br>
+<br>
+<nav  class="navbar navbar-expand-lg  fixed-top navbar-dark bg-faded" style="background-color:black">
+   
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+     
+
+         <ul class="navbar-nav mr-auto" >
+          <li class="nav-item">
+               <a  class="nav-link " href="/"> Inicio</a>
+          </li>
+          <% if(userName != undefined){ %>
+          <li class="nav-item">
+               <a  class="nav-link " href="/admin/calendar"> Agendar </a>
+          </li>
+          <%if(userName.permissao == 1){  %>
+                   
+               <li class="nav-item">
+                    <a  class="nav-link " href="/users/horarios"> Meus horários</a>
+               </li>
+                    
+                   
+                   
+                      
+               <% } %>
+
+         <% }%>
+         </ul>
+         
+         <ul class="navbar-nav ml-auto">  
+         <% if(userName != undefined){ %>
+
+          
+
+
+               <li class="nav-item">
+                    <% if(userName != undefined ){ %>
+
+                         <% if(userName.permissao == 2){ %>
+                   <!-- <li class="nav-item">
+                         <a class="nav-link"  href="/usuario/menu">Menu administrativo</a>
+                    </li>--> 
+                  
+                    
+                   
+                    <% } %>   
+                    <% } %> 
+                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div style="position:absolute ; top: 25%; left: 86%;" class="dropdown">
+                         <button   class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <%= userName.name%>
+                            </button>
+                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                           <a class="dropdown-item" href="/admin/users/edit/<%=userName.id%>">Alterar meus dados</a>
+                           
+                         </div>
+                       </div>
+               </li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <li class="nav-item " >
+                   <a class="nav-link" href="logout">Sair</a> 
+               </li>
+               <%if(userName.permissao == 1){  %>
+                   
+                 
+                    
+                   
+                   
+                      
+                        <% } %>
+                    
+           <% }else{ %>
+               <li class="nav-item">
+                    <a class="nav-link" href="/admin/users/create">Cadastrar </a>
+               </li>
+               
+   
+               <li class="nav-item">
+                    <a class="nav-link" href="/login">Entrar </a>
+               </li>
+               <% } %>
+
+          
+            
+
+         </ul>
+
+         <a style="position:fixed; top: -2%; left: 1%;" id="barbearia" class="navbar-brand " href="/">
+          <img src="/img/logo.png" alt="logo" width=100 height=100>
+         </a>     
+
+         
+</nav>
+  
+<% if(userName != undefined){ %>
+<% if(userName.permissao == 2){ %>
+   
+
+
+  
+
+<hr>
+<div class="container" style="text-align: center;">
+  <% if(success != ""){ %><div class="alert alert-success" role="alert">  <%= success%>  </div>  <%} %>
+  
+    <br>
+    <p>
+        
+        <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">Agendamentos</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Financeiro</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Clientes</button>
+        
+      </p>
+      <div class="row">
+        
+        <div class="col">
+          <div class="collapse multi-collapse" id="multiCollapseExample1">
+            <div class="card card-body">
+             <a href="/usuario/calendar"><button class="btn btn-dark" >
+                 Ver agendamentos existentes
+             </button></a>
+             
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="collapse multi-collapse" id="multiCollapseExample2">
+            <div class="card card-body">
+              <a href="/admin/servicos/new"><button class="btn btn-dark" >
+                Inserir serviços
+            </button></a><br>
+            <a href="/admin/servicos/relatorio"><button class="btn btn-dark" >
+              Relatório de serviços
+          </button></a><br>
+          <a href="/admin/despesas/new"><button class="btn btn-dark" >
+            Inserir despesas
+        </button></a><br>
+          <a href="/admin/despesas/relatorio"><button class="btn btn-dark" >
+            Relatório de despesas
+        </button></a><br>
+        <a href="/admin/balanco"><button class="btn btn-dark" >
+          Faturamento e balanço 
+      </button></a>
+            </div>
+          </div>
+        </div> 
+        <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample3">
+              <div class="card card-body">
+                <a href="/admin/users"><button class="btn btn-dark" >
+                  Ver clientes cadastrados
+              </button></a>
+              </div>
+            </div>
+          </div>
+
+      </div>
+
+
+      <a style="position:fixed; top: 8%; left: 93%;" id="menu" class="navbar-brand " href="/usuario/menu">
+        <img src="/img/menu.png" alt="menu" width=75 height=80>
+       </a>    
+</div>
+     
+     <% }else{%>
+     
+<body>
+     <div class="jumbotron">
+          <% if( success != undefined && success != "" ){ %><div class="alert alert-success" role="alert">  <%= success%>  </div>  <%} %>
+          <h1 class="display-4">Olá, seja bem vindo a nosso ambiente!</h1>
+          <p class="lead">Aqui você poderá agendar seu horário sem sair da sua casa!</p>
+          <hr class="my-4">
+          <p style="text-align: center;" class="lead">Se você ainda não é nosso cliente faça seu cadastro!</p> 
+          <a style="position: relative; top: 55%; left: 42%;" class="btn btn-primary btn-lg" href="/admin/users/create" role="button">Quero me cadastrar!</a><br><br><br>
+          <p style="text-align: center;" class="lead">Se você já é nosso cliente agende seu horário!</p>
+          <a style="position: relative; top: 75%; left: 40%;" class="btn btn-primary btn-lg" href="/admin/calendar" role="button">Quero agendar um horário!</a>
+     <br>  
+     <br>  
+     <br>  
+     <br>  
+    
+     </div>
+    
+</body>
+<% }%>
+<% }else{%>
+     <body>
+          <div class="jumbotron">
+               <% if( success != undefined && success != "" ){ %><div class="alert alert-success" role="alert">  <%= success%>  </div>  <%} %>
+               <h1 class="display-4">Olá, seja bem vindo a nosso ambiente!</h1>
+               <p class="lead">Aqui você poderá agendar seu horário sem sair da sua casa!</p>
+               <hr class="my-4">
+               <p style="text-align: center;" class="lead">Se você ainda não é nosso cliente faça seu cadastro!</p> 
+               <a style="position: relative; top: 55%; left: 42%;" class="btn btn-primary btn-lg" href="/admin/users/create" role="button">Quero me cadastrar!</a><br><br><br>
+               <p style="text-align: center;" class="lead">Se você já é nosso cliente agende seu horário!</p>
+               <a style="position: relative; top: 75%; left: 40%;" class="btn btn-primary btn-lg" href="/admin/calendar" role="button">Quero agendar um horário!</a>
+          <br>  
+          <br>  
+          <br>  
+          <br>  
+         
+          </div>
+         
+     </body>
+
+     <% }%>
+<%- include ('./partials/footer.ejs') %>

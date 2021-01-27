@@ -1,0 +1,50 @@
+<%- include ('../../../partials/header.ejs') %>
+<%- include ('../../../partials/navbar.ejs') %>
+<br>
+<br>
+<div class="container">
+    <hr>              
+        <div class="container">
+            <div class="card">
+                 <div class="card-header">
+                    <h1> Meus horários</h1>
+                </div>
+                 </div> <br>
+                </div>
+                <% horas.forEach(hora =>{ %> 
+                     <table  class="table table-bordered">
+                        <thead > 
+                            <tr > 
+                                <th>Data</th>
+                                          
+                                <th>Horário</th>
+                           
+                            
+                                <th>Descrição</th>          
+                
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <tr> 
+                                   
+                                        <td><%= hora.diaId%>-<%=hora.mes%>-2020  </td>
+                                   
+                                        <td><%=hora.name %>  </td>
+                                   
+                                      
+                                        <td><%=hora.descricaoAgender%>  </td>
+                                    
+                                       
+                                    </td>
+                             
+                                 
+                                </tr> 
+                        </tbody>
+                
+                        
+                    </table>
+    <% })%>
+                    <hr>
+   
+</div>
+<%- include ('../../../partials/footer.ejs') %>

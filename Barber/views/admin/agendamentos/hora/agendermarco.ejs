@@ -1,0 +1,70 @@
+<%- include ('../../../partials/header.ejs') %>
+<%- include ('../../../partials/navbar.ejs') %>
+<br>
+<br>
+<div class="container">
+
+
+    <hr>
+    
+    <% horas.forEach(hora =>{ %>
+       
+      
+        <% if(hora.name == "7:00-8:00" && hora.mes == 3 ){ %>
+        <div class="container">
+            
+            <div class="card">
+                 <div class="card-header">
+                    <h1> <%= hora.diaId %> de março</h1>
+                </div>
+                 </div> <br>
+                </div>
+
+                <%} %>
+
+                <%if(hora.agender == false && hora.mes == 3){ %>
+                 <div class="card card-body">
+                    <form method="POST" action="/agender/save"> 
+                     <label> Horário de <%= hora.name%> </label>
+                     <input type="hidden" value="<%= hora.id %>" name="id">
+                     
+                            <br>
+                     
+                     <label> Descrição:</label>
+                     <input class="form-control" name="descricaoAgender" type="text" placeholder="Digite o serviço desejado" required><br>
+                     
+                     
+                     <input type="hidden" value="true" name="agender">
+                     <button class="btn btn-success btn-block" type="submit">Agendar</button>
+                  
+                    </form>
+                </div>
+            <br>
+
+            <% }else{ %>
+                <% if(hora.mes == 3){ %>
+                <div class="card card-body">
+                    <form method="POST" action=""> 
+                     <label> Horário de <%= hora.name%> </label>
+                     <input type="hidden" value="<%= hora.id %>" name="id">
+                     <div class="alert alert-danger" role="alert">
+                        Este horário já está agendado!
+                      </div>
+                    </form>
+                </div>
+                <br>
+                <% } %>
+                <% } %>
+          
+            
+    
+   <% }) %>
+    
+   
+
+
+
+    <hr>
+    
+</div>
+<%- include ('../../../partials/footer.ejs') %>

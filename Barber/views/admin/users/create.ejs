@@ -1,0 +1,43 @@
+<%- include ('../../partials/header.ejs') %>
+<%- include ('../../partials/navbar.ejs') %>
+<br>
+<br>
+
+<div class="container">
+    <hr>
+    <div class="card mt-5">
+        <div class="card-header"> 
+           <h2> Novo usuário </h2> 
+        </div>
+        <div class="card-body">
+            <form action="/users/create/" method="POST">
+                <% if(  emailIgual != "" && emailIgual != undefined  ){ %><div class="alert alert-danger" role="alert" >  <%= emailIgual%>  </div>  <%} %>
+                <label> Nome:</label>
+                <input class="form-control" name="name" type="text" placeholder="Digite seu nome" required>
+                <% if(errorName != ""){ %><div class="alert alert-danger" role="alert">  <%= errorName%>  </div>  <%} %>
+                <label> Sobrenome:</label>
+                <input class="form-control" name="surname" type="text" placeholder="Digite seu sobrenome" required>
+                <% if(errorSurname != ""){ %><div class="alert alert-danger" role="alert">  <%= errorSurname%>  </div>  <%} %>
+                <label> Whatsapp:</label>
+                <input class="form-control" name="whatsapp" type="tel" placeholder="(00)90000-0000" required>
+                <% if(errorWhats != ""){ %><div class="alert alert-danger" role="alert">  <%= errorWhats%>  </div>  <%} %>
+                <label> Email:</label>
+                <input class="form-control" name="email" type="email" placeholder="email@example.com" required>
+                <% if(errorEmail != ""){ %><div class="alert alert-danger" role="alert">  <%= errorEmail%>  </div>  <%} %>
+               
+               
+            
+                <label> Senha:</label>
+                <input class="form-control" name="password" type="password" placeholder="Mínimo 8 caracteres" required>
+                <% if(errorPass != ""){ %><div class="alert alert-danger" role="alert">  <%= errorPass%>  </div>  <%} %>
+                <br>
+            <button class="btn btn-success btn-block" type="submit">Cadastrar</button>
+        </form>
+        </div>
+
+    </div>
+</div>
+<br>
+
+
+<%- include ('../../partials/footer.ejs') %>

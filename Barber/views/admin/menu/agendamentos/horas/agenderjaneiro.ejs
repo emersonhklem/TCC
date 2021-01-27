@@ -1,0 +1,133 @@
+<%- include ('../../../../partials/header.ejs') %>
+<%- include ('../../../../partials/navbar.ejs') %>
+<br>
+<br>
+<div class="container">
+
+
+    <hr>
+    
+    <% horas.forEach(hora =>{ %>
+       
+      
+        <% if(hora.name == "7:00-8:00" && hora.mes == 1 ){ %>
+        <div class="container">
+            
+            <div class="card">
+                 <div class="card-header">
+                    <h1> <%= hora.diaId %> de janeiro</h1>
+                </div>
+                 </div> <br>
+                </div>
+
+                <%} %>
+
+                <%if( hora.mes == 1){ %>
+               
+                    <form method="POST" action=""> 
+                    
+                     
+                     <table  class="table table-bordered">
+                        <thead >
+                           
+                            <tr > 
+                                <th>Horário</th>
+                                <th>Nome</th>             
+                                <th>Descrição</th>
+                                <th>Email</th>
+                                <th>Whatsapp</th>
+                                <th>Ações</th>
+                                
+                
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <tr> 
+                                    <%if(hora.emailAgender == "x"){ %>
+                                        <td><%=hora.name%></td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td>  </td>
+                                        <td> <a href="/agender/edit/<%=hora.mes%>/<%=hora.id%>" class="btn btn-warning">Editar</a> </td>
+                                        
+                                       
+                                    <% }else{ %>
+                                        <td><%=hora.name%></td>
+                                    <td><%=hora.nameAgender %> </td>
+                                    <td> <%=hora.descricaoAgender %></td>
+                                    <td>  <%=hora.emailAgender%></td>
+                                    <td>  <%=hora.whatsappAgender%></td>
+                                    <td> 
+                                        <a href="/agender/edit/<%=hora.mes%>/<%=hora.id%>" class="btn btn-warning">Editar</a>
+                                        
+                                        
+
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalExemplo">
+                                            Apagar
+                                          </button>
+                                          
+                                          <!-- Modal -->
+                                          <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalLabel">Apagar Dados</h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                  Tem certeza que deseja apagar esses dados?
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                                  <a class="btn btn-danger"  href="/agender/apagardados/<%= hora.id  %>"> 
+                                                    Apagar
+                                                 </a>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+
+
+                                                
+                                             
+
+                 
+                                          <a href="/admin/servicos/newok/<%=hora.id%>" class="btn btn-success">Ok</a>
+                                    </td>
+                                  <% } %>
+                                 
+                                </tr> 
+                        </tbody>
+                
+                        
+                    </table>
+
+
+                     <input type="hidden" value="<%= hora.id %>" name="id">
+                     <input type="hidden" value="true" name="agender"> 
+                
+                    </form>
+               
+        
+
+            <% }else{ %>
+                
+                <% } %>
+          
+            
+    
+   <% }) %>
+    
+   
+
+
+
+    <hr>
+    <a style="position:fixed; top: 8%; left: 93%;" id="menu" class="navbar-brand " href="/usuario/menu">
+      <img src="/img/menu.png" alt="menu" width=75 height=80>
+     </a>    
+</div>
+<%- include ('../../../../partials/footer.ejs') %>

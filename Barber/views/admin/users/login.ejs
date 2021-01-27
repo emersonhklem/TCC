@@ -1,0 +1,37 @@
+<%- include ('../../partials/header.ejs') %>
+
+
+<br>
+<br>
+<div class="container">
+    <% if(nologin != "" ){ %><div class="alert alert-danger" role="alert">  <%= nologin%>  </div>  <%} %>
+    
+    <hr>
+
+    <a style="margin-left: 80%;" href="/" type="button" class="btn btn-primary"> Retornar a tela principal </a>
+    <div class="card mt-5">
+        <div class="card-header"> 
+           <h2 style="text-align: center;"> Conecte-se</h2> 
+          
+        </div>
+        <div class="card-body">
+            <form action="/authenticate" method="POST">
+            <label> Email:</label>
+            <input class="form-control" name="email" type="email" placeholder="email@example.com" required>
+            <% if(errorEmail != "" ){ %><div class="alert alert-danger" role="alert">  <%= errorEmail%>  </div>  <%} %>
+            <% if(emailIncorreto != "" ){ %><div class="alert alert-danger" role="alert">  <%= emailIncorreto%>  </div>  <%} %>
+            <br>
+            <label> Senha:</label>
+            <input class="form-control" name="password" type="password" placeholder="********" required>
+            <% if(errorPass != "" ){ %><div class="alert alert-danger" role="alert">  <%= errorPass%>  </div>  <%} %>
+            <% if(senhaIncorreta != "" ){ %><div class="alert alert-danger" role="alert">  <%= senhaIncorreta%>  </div>  <%} %>
+            <br>
+            <button class="btn btn-success btn-block" type="submit">Entrar</button>
+        </form>
+        </div>
+
+    </div>
+</div>
+
+
+<%- include ('../../partials/footer.ejs') %>

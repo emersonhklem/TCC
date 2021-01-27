@@ -1,0 +1,63 @@
+<%- include ('../../../partials/header.ejs') %>
+<%- include ('../../../partials/navbar.ejs') %>
+
+<br>
+<br>
+<div class="container">
+    <hr>
+    <div class="card mt-5">
+        <div class="card-header"> 
+           <h2>Criando Horas </h2> 
+        </div>
+        <div class="card-body">
+            <form action="/horas/save" method="POST">
+                <label> Hora:</label>
+                <input class="form-control" name="name" type="text" placeholder="Digite a hora:"><br>
+                <input type="hidden" name="nameAgender" value="x">
+                <input type="hidden" name="emailAgender" value="x">
+                <input type="hidden" name="descricaoAgender" value="x">
+               
+                <input type="hidden" name="whatsappAgender" value="x">
+
+                <label> Dia:</label>
+                <!--
+                <select name="dia" class="form-control" > 
+                    <% dias.forEach((dia) => {   %>
+                         <option value="<%= dia.id %>"><%= dia.name %> </option>
+                     <% }) %>
+                    
+                 </select><br>
+                 -->
+                 <select name="dia" class="form-control" > 
+                   
+                         <option value="27">27</option>
+                    
+                    
+                 </select>
+                 <label> Mês:</label>
+                 <!--
+                 <select name="mes" class="form-control" > 
+                   
+                         <option value="1">1 </option>
+                         <option value="2">2 </option>
+                         <option value="3">3 </option>                  
+                 </select><br>
+                 -->
+                 <select name="mes" class="form-control" > 
+                   
+                    <option value="3">3 </option>
+               
+               
+            </select>
+
+                 <input type="hidden" name="agender" value="false" >
+               
+            <button class="btn btn-success btn-block" type="submit">Cadastrar</button>
+        </form>
+        </div>
+
+    </div>
+</div>
+
+
+<%- include ('../../../partials/footer.ejs') %>

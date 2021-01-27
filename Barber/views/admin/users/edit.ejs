@@ -1,0 +1,44 @@
+<%- include ('../../partials/header.ejs') %>
+<%- include ('../../partials/navbar.ejs') %>
+
+<br>
+<br>
+<div class="container">
+     <hr>
+     <div class="card">
+          <div class="card-header">
+              <h2> Alterar dados do meu usuário</h2>
+          </div>
+
+    <div class="card-body">
+        <form method="POST" action="/admin/user/update"> 
+            <input type="hidden" value="<%= user.id %>" name="id">
+            <label> Nome:</label>
+            <input class="form-control" name="name" type="text" value="<%=user.name %>" required> <br>
+            
+            <label> Sobrenome:</label>
+            <input class="form-control" name="surname" type="text" value="<%=user.surname %>" required><br>
+
+            <label> Whatsapp:</label>
+            <input class="form-control" name="whatsapp" type="tel" value="<%=user.whatsapp %>"required><br>
+        
+            <label> Email:</label>
+            <input class="form-control" name="email" type="email" value="<%=user.email %>"required><br>
+       
+            <label> Senha:</label>
+            <input class="form-control" name="password" type="password" placeholder="Mínimo 8 caracteres"required><br>
+           
+       
+            <br>
+         
+           
+           
+            <button class="btn btn-success btn-block" type="submit">Alterar  </button>
+        </form>
+</div>
+</div>
+</div>
+
+
+
+<%- include ('../../partials/footer.ejs') %>

@@ -1,0 +1,31 @@
+<%- include ('../../partials/header.ejs') %>
+<%- include ('../../partials/navbar.ejs') %>
+
+
+<br>
+<br>
+<div class="container">
+  <br>
+  <% if(emailDif != "" ){ %><div class="alert alert-danger" role="alert">  <%= emailDif%>  </div>  <%} %>
+  
+    <br>
+    <h4 > Escolha um mês para agendar o seu corte!</h4>
+    <hr >
+    <div class="card">
+        <div class="card-header">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary active">
+                  <input type="radio" name="options" id="option1" autocomplete="off" > <a href="/admin/janeiro">Janeiro</a>
+                </label>
+                <label class="btn btn-secondary">
+                  <input type="radio" name="options" id="option2" autocomplete="off"> <a href="/admin/fevereiro">Fevereiro</a>
+                </label>
+                <label class="btn btn-secondary">
+                  <input type="radio" name="options" id="option3" autocomplete="off"> <a href="/admin/marco"> Março</a>
+                </label>
+              </div>
+        </div>
+    </div>
+
+
+    <%- include ('../../partials/footer.ejs') %>
